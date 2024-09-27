@@ -1,5 +1,6 @@
 import "./App.css";
 import Task from "./components/task";
+import AddTaskForm from "./components/form";
 import React, { useState } from "react";
 
 function App() {
@@ -26,30 +27,33 @@ function App() {
   const doneHandler = (taskIndex) => {
     const tasks = [...taskState.tasks];
     tasks[taskIndex].done = !tasks[taskIndex].done;
-    setTaskState({tasks});
+    setTaskState({ tasks });
     console.log(`${taskIndex} ${tasks[taskIndex].done}`);
-  }
+  };
 
   const deleteHandler = (taskIndex) => {
     const tasks = [...taskState.tasks];
     tasks.splice(taskIndex, 1);
-    setTaskState({tasks});
-  } 
+    setTaskState({ tasks });
+  };
 
   return (
     <div className="container">
       <h1>Tasky</h1>
-      {taskState.tasks.map(({ title, description, deadline, id, done }, idx) => (
-        <Task
-          title={title}
-          description={description}
-          deadline={deadline}
-          key={id}
-          done={done}
-          markDone={() => doneHandler(idx)}
-          deleteTask = {() => deleteHandler(idx)}
-        />
-      ))}
+      {taskState.tasks.map(
+        ({ title, description, deadline, id, done }, idx) => (
+          <Task
+            title={title}
+            description={description}
+            deadline={deadline}
+            key={id}
+            done={done}
+            markDone={() => doneHandler(idx)}
+            deleteTask={() => deleteHandler(idx)}
+          />
+        )
+      )}
+      <AddTaskForm />   
     </div>
   );
 }
