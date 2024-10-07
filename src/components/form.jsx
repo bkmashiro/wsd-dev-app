@@ -1,28 +1,28 @@
 import React from "react";
 
 const AddTaskForm = (props) => {
-
   return (
     <div>
       <form>
         <label>
-            Task title:
-            <input type="text" name="title" required />
+          <p>Task title:</p>
+          <input type="text" name="title" required />
         </label>
         <br />
         <label>
-            Due date:
-            <input type="date" name="deadline" required />
+          <p>Due date:</p>
+          <input type="date" name="deadline" required />
         </label>
         <br />
         <label>
-            Details:
-            <input type="text" name="description" />
+          <p>Details:</p>
+
+          <input type="text" name="description" />
         </label>
         <input type="submit" value="Submit" />
-        </form>
+      </form>
     </div>
-  )
+  );
 };
 
 export default AddTaskForm;
